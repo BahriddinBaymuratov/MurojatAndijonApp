@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">MurojatAndijonApp</string>
     <string name="start">kirish</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="have">Don`t you have an account?</string>
+    <string name="full_name">Full Name</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="add">Create</string>
+    <string name="delete">Delete</string>
+    <string name="title">Add</string>
+    <string name="_0">0</string>
+    <string name="s">Murojat Andijon</string>
+    <string name="reg">Ro\'yhatdan o\'tmagan bolsangiz</string>
+    <string name="registere">Ro\'yhatdan otish</string>
 </resources>

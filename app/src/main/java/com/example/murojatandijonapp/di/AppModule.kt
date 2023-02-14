@@ -1,5 +1,4 @@
-package com.example.data.di
-
+package com.example.murojatandijonapp.di
 import com.example.data.repository.AuthRepositoryImpl
 import com.example.domain.repository.AuthRepository
 import com.example.domain.use_case.auth_use_case.LoginUseCase
@@ -14,29 +13,29 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class )
-class AppModule {
+@InstallIn(SingletonComponent::class)
+object AppModule {
 
-    @Provides
     @Singleton
+    @Provides
     fun provideFirebaseAuth(): FirebaseAuth{
         return FirebaseAuth.getInstance()
     }
-    @Provides
     @Singleton
+    @Provides
     fun provideFirebaseFireStore(): FirebaseFirestore {
         return FirebaseFirestore.getInstance()
     }
-    @Provides
     @Singleton
+    @Provides
     fun provideAuthRepository(
         auth: FirebaseAuth,
         fireStore: FirebaseFirestore
     ): AuthRepository {
         return AuthRepositoryImpl(auth, fireStore)
     }
-    @Provides
     @Singleton
+    @Provides
     fun provideAllUseCases(
         authRepository: AuthRepository,
 //        productRepository: ProductRepository
