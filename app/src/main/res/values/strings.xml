@@ -18,4 +18,10 @@
     <string name="s">Murojat Andijon</string>
     <string name="reg">Ro\'yhatdan o\'tmagan bolsangiz</string>
     <string name="registere">Ro\'yhatdan otish</string>
+    <string name="w">Ro\'yhatdan o\'tish</string>
+    <string name="home">Home</string>
+    <string name="addd">Add</string>
+    <string name="statistic">Statistic</string>
+    <string name="hello">Salom,</string>
+    <string name="a">Elektr energiyasida zamikaniya bo’lgani uchun svet yo’q!</string>
 </resources>
