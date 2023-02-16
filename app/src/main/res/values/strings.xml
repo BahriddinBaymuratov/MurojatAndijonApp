@@ -24,4 +24,8 @@
     <string name="statistic">Statistic</string>
     <string name="hello">Salom,</string>
     <string name="a">Elektr energiyasida zamikaniya bo’lgani uchun svet yo’q!</string>
+    <string name="b">Turg’unoc saidjon Uz Avto IOtorisga ishga kirish istagini bildirdi</string>
+    <string name="date_enter">Date enter</string>
+    <string name="cancel">Cancel</string>
+    <string name="set">Yes</string>
 </resources>

@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/menu_back"
+                app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
                 app:itemIconTint="@drawable/bottom"
                 app:itemTextColor="@drawable/bottom"
                 app:labelVisibilityMode="unlabeled"

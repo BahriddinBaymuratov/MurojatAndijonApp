@@ -39,7 +39,8 @@ class AuthRepositoryImpl @Inject constructor(
                 fireStore.collection("users").document(id).set(user).addOnSuccessListener {
                     isSuccessful = true
                 }
-            }
+            }.await()
+            emit(ResponseL.Success(true))
         } catch (e: Exception) {
             emit(ResponseL.Error(e.message.toString()))
         }
