@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="20dp"
-    tools:context=".main.fragment.AddFragment">
+    tools:context=".main.fragment.add.AddFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,6 +56,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/streetName"
                     android:hint="Ko'cha nomi"
                     android:textSize="12sp" />
 
@@ -71,6 +72,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/address"
                     android:hint="Xonadon manzili"
                     android:textSize="12sp" />
 
@@ -114,6 +116,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/name"
                     android:layout_height="wrap_content"
                     android:hint="Ismi"
                     android:textSize="12sp" />
@@ -129,6 +132,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/lastName"
                     android:layout_height="wrap_content"
                     android:hint="Familya"
                     android:textSize="12sp" />
@@ -173,6 +177,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/young"
                     android:hint="Yoshi"
                     android:textSize="12sp" />
 
@@ -188,6 +193,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/gender"
                     android:hint="Erkak/Ayol"
                     android:textSize="12sp" />
 
@@ -224,6 +230,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="+998*********"
+                    android:id="@+id/number"
                     android:inputType="number"
                     android:textSize="12sp" />
 

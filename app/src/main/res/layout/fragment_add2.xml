@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".main.fragment.Add2Fragment">
+    tools:context=".main.fragment.add.Add2Fragment">
 
     <ImageButton
         android:id="@+id/btnBack"

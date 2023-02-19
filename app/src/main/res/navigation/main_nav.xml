@@ -7,17 +7,35 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.murojatandijonapp.main.fragment.HomeFragment"
+        android:name="com.example.murojatandijonapp.main.fragment.home.HomeFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.murojatandijonapp.main.fragment.AddFragment"
+        android:name="com.example.murojatandijonapp.main.fragment.add.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_add2Fragment"
+            app:destination="@id/add2Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/statisticFragment"
         android:name="com.example.murojatandijonapp.main.fragment.StaticFragment"
         android:label="fragment_static"
         tools:layout="@layout/fragment_static" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.murojatandijonapp.main.fragment.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/add2Fragment"
+        android:name="com.example.murojatandijonapp.main.fragment.add.Add2Fragment"
+        android:label="fragment_add2"
+        tools:layout="@layout/fragment_add2" />
 </navigation>
