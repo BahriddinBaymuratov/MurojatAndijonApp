@@ -41,12 +41,12 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.PersonVH>(DiffCallBack()
         RecyclerView.ViewHolder(binding.root) {
         fun bind(person: Person) {
             with(binding) {
-                itemName.text = "${person.name + person.lastName}"
+                itemName.text = "${person.name} ${person.lastName}"
                 desc.text = person.description
                 streetName.text = person.street
                 address.text = person.address
-
             }
+
             itemView.setOnClickListener {
                 onClick(person)
             }

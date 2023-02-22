@@ -2,9 +2,11 @@ package com.example.murojatandijonapp.main.fragment.add
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,8 +15,6 @@ import com.example.domain.model.Person
 import com.example.murojatandijonapp.R
 import com.example.murojatandijonapp.base.BaseFragment
 import com.example.murojatandijonapp.databinding.FragmentAddBinding
-import com.example.murojatandijonapp.main.fragment.PersonAdapter
-import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -42,6 +42,7 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
             findNavController().popBackStack()
         }
         binding.apply {
+            binding.btnResume.click {
                 val streetName = streetName.text.toString().trim()
                 val address = address.text.toString().trim()
                 val name = name.text.toString().trim()
@@ -50,21 +51,25 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
                 val gender = gender.text.toString().trim()
                 val number = number.text.toString().trim()
 
-                val person = Person(
-                    name,
-                    lastName,
-                    young,
-                    streetName,
-                    address,
-                    number,
-                    gender,
-                    "${R.string.m}",
-                    ""
-                )
-                btnResume.click {
+                if (name.isNotBlank() && lastName.isNotBlank() && gender.isNotBlank() && address.isNotBlank() && number.isNotBlank()) {
+                    val person = Person(
+                        name,
+                        lastName,
+                        young,
+                        streetName,
+                        address,
+                        number,
+                        gender,
+                        "${R.string.m}",
+                        ""
+                    )
                     val bundle = bundleOf("person" to person)
                     findNavController().navigate(R.id.action_addFragment_to_add2Fragment, bundle)
+                    Log.d("@@@", "AddFragment: Malumotlar jonatildi")
+                } else {
+                    Toast.makeText(requireContext(), "Enter your data !!", Toast.LENGTH_SHORT).show()
                 }
+            }
         }
         observe()
     }
@@ -79,7 +84,8 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
                         snackBar(state.message)
                     }
                     is AddFragmentState.Success -> {
-                        snackBar("Malumotlar qabul qilindi !")
+                        snackBar("viewModel state Successga tushdi !")
+                        Log.d("@@@", "AddFragment: Malumotlar jonatildi Succesda")
                     }
                 }
             }

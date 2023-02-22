@@ -27,7 +27,8 @@ class PersonRepositoryImpl @Inject constructor(
                 name = person.name, lastName = person.lastName,
                 young = person.young, street = person.street,
                 address = person.address, number = person.number,
-                gender = person.gender, description = person.description,"")
+                gender = person.gender, description = person.description, ""
+            )
             fireStore.collection("muammolar").document(productId).set(newProduct)
                 .addOnSuccessListener {
                     isSuccessful = true
@@ -38,21 +39,42 @@ class PersonRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllPerson(userId: String): Flow<ResponseL<List<Person>>> = callbackFlow {
-        ResponseL.Loading
-        val snap = fireStore.collection("products")
-            .whereEqualTo("userId" ,userId)
-            .addSnapshotListener { snapshot, error ->
-                val response = if (snapshot != null){
-                    val postList = snapshot.toObjects(Person::class.java)
-                    ResponseL.Success(postList)
-                }else{
-                    ResponseL.Error(error?.stackTraceToString()!!)
+    override suspend fun getAllPerson(userId: String): Flow<ResponseL<List<Person>>> =
+        callbackFlow {
+            ResponseL.Loading
+            val snap = fireStore.collection("products")
+                .whereEqualTo("userId", userId)
+                .addSnapshotListener { snapshot, error ->
+                    val response = if (snapshot != null) {
+                        val postList = snapshot.toObjects(Person::class.java)
+                        ResponseL.Success(postList)
+                    } else {
+                        ResponseL.Error(error?.stackTraceToString()!!)
+                    }
+                    trySend(response).isSuccess
                 }
-                trySend(response).isSuccess
+            awaitClose {
+                snap.remove()
             }
-        awaitClose{
-            snap.remove()
+        }
+
+    override suspend fun createProblem(person: Person): Flow<ResponseL<Boolean>> = flow {
+        isSuccessful = false
+        try {
+            val id = fireStore.collection("muammolar").document().id
+            val newProblem = Person(
+                name = person.name, lastName = person.lastName,
+                young = person.young, street = person.street,
+                address = person.address, number = person.number,
+                gender = person.gender, description = person.description,
+                image = person.image
+            )
+            fireStore.collection("muammolar").document(id).set(newProblem).addOnSuccessListener {
+                isSuccessful = true
+            }.await()
+            emit(ResponseL.Success(isSuccessful))
+        } catch (e: Exception) {
+            emit(ResponseL.Error(e.message.toString()))
         }
     }
 }

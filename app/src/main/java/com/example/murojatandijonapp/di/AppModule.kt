@@ -8,6 +8,7 @@ import com.example.domain.use_case.auth_use_case.LoginUseCase
 import com.example.domain.use_case.auth_use_case.RegisterUseCase
 import com.example.domain.use_case.base.AllUseCase
 import com.example.domain.use_case.person_use_case.CreatePersonUseCase
+import com.example.domain.use_case.person_use_case.CreateProblemUseCase
 import com.example.domain.use_case.person_use_case.GetAllPersonUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -62,6 +63,7 @@ object AppModule {
             registerUseCase = RegisterUseCase(authRepository),
             createPersonUseCase = CreatePersonUseCase(repository),
             getAllPersonUseCase = GetAllPersonUseCase(repository),
+            createProblemUseCase = CreateProblemUseCase(repository),
 //            logOutUseCase = LogOutUseCase(authRepository),
         )
     }

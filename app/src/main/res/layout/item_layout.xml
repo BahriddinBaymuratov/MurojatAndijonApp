@@ -1,155 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="8dp"
-    android:padding="10dp"
-    android:backgroundTint="#BBE2FF"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:layout_height="wrap_content">
+    android:backgroundTint="#BBE2FF"
+    android:padding="10dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jarayonda"
-                android:gravity="start"
-                android:paddingVertical="5dp"
-                android:paddingHorizontal="10dp"
-                android:layout_marginEnd="40dp"
-                android:layout_gravity="center"
-                android:textSize="14sp"
-                android:background="@drawable/text_shape"
-                android:textColor="@color/white"/>
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="40dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/person"/>
+                android:layout_gravity="center"
+                android:layout_marginStart="3dp"
+                android:src="@drawable/person" />
 
             <TextView
                 android:id="@+id/itemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:layout_marginStart="15dp"
                 android:layout_gravity="center"
+                android:layout_marginStart="7dp"
                 android:text="Mamirov Jahongir"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/desc"
-            android:layout_width="match_parent"
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/a"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/text_shape"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:text="Jarayonda"
+            android:textColor="@color/white"
+            android:textSize="5sp" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:padding="5dp"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="30dp"
-            android:textSize="30sp"
-            android:textColor="@color/black"/>
+            android:text="@string/a"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="4dp">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="40dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/location"/>
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/location" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@id/streetName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="7dp"
-                    android:orientation="horizontal">
+                    android:text=" Nayman qishlog'i "
+                    android:textColor="#2E2D2D"
+                    android:textSize="10sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="Andijon viloyati, "
-                        android:textColor="#2E2D2D"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="Andijon tumani"
-                        android:textColor="#2E2D2D"
-                        android:textSize="11sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="7dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@id/streetName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text=" Nayman qishlog'i "
-                        android:textColor="#2E2D2D"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="Qo'qonlik mahallasi"
-                        android:textColor="#2E2D2D"
-                        android:textSize="11sp" />
-
-                </LinearLayout>
+                    android:layout_marginStart="2dp"
+                    android:text="Qo'qonlik mahallasi"
+                    android:textColor="#2E2D2D"
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 
 
 </androidx.cardview.widget.CardView>
