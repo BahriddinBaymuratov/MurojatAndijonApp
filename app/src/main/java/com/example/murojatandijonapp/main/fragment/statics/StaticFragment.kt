@@ -1,29 +1,43 @@
-package com.example.murojatandijonapp.main.fragment
+package com.example.murojatandijonapp.main.fragment.statics
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.domain.model.Person
 import com.example.domain.util.viewBinding
 import com.example.murojatandijonapp.R
 import com.example.murojatandijonapp.base.BaseFragment
 import com.example.murojatandijonapp.databinding.FragmentStaticBinding
+import com.example.murojatandijonapp.main.fragment.PersonAdapter
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class StaticFragment : BaseFragment(R.layout.fragment_static) {
     private val binding by viewBinding { FragmentStaticBinding.bind(it) }
-    private val list = listOf("Jarayonda","Tugatildi")
+    private val list = listOf("Jarayonda", "Tugatildi")
+    private val fireStore by lazy { FirebaseFirestore.getInstance() }
+    private val adapter1 by lazy { PersonAdapter() }
     private lateinit var autoCompleteList: String
+    private var problemList: MutableList<Person> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         autoComplete()
+        initViews()
+    }
 
+    private fun initViews() {
         binding.apply {
+            recyclerView.apply {
+                adapter = adapter1
+                layoutManager = StaggeredGridLayoutManager(2, LinearLayout.VERTICAL)
+            }
             btnFilter.setOnClickListener {
                 binding.btnFilter.isVisible = false
                 binding.linearTop.isVisible = true
@@ -32,18 +46,26 @@ class StaticFragment : BaseFragment(R.layout.fragment_static) {
                 findNavController().popBackStack()
             }
             etFromDate.setOnFocusChangeListener { _, focus ->
-                if (focus){
+                if (focus) {
                     showDatePicker()
                 }
             }
             etToDate.setOnFocusChangeListener { _, focus ->
-                if (focus){
+                if (focus) {
                     showDatePicker()
                 }
             }
 
         }
-
+        fireStore.collection("problem").get().addOnCompleteListener {
+            problemList.clear()
+            if (it.isSuccessful){
+                val problem = it.result.toObjects(Person::class.java)
+                problemList.addAll(problem)
+            }
+            adapter1.submitList(problemList)
+            adapter1.notifyDataSetChanged()
+        }
     }
 
     private fun showDatePicker() {

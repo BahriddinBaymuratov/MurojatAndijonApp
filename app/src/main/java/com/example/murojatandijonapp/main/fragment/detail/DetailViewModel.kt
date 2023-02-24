@@ -20,27 +20,27 @@ class DetailViewModel @Inject constructor(
 
 
     init {
-//        getAllPerson()
+        getAllPerson()
     }
 
-//    private fun getAllPerson(userId" "){
-//        viewModelScope.launch {
-//            useCase.getAllPersonUseCase(Unit).collect{response->
-//                when(response){
-//                    is ResponseL.Loading -> _state.update {
-//                        DetailState.Loading
-//                    }
-//                    is ResponseL.Error -> _state.update {
-//                        DetailState.Error(response.message)
-//                    }
-//                    is ResponseL.Success -> {
-//                        _state.update {
-//                            DetailState.Success(response.data)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    private fun getAllPerson(){
+        viewModelScope.launch {
+            useCase.getAllPersonUseCase(Unit).collect{response->
+                when(response){
+                    is ResponseL.Loading -> _state.update {
+                        DetailState.Loading
+                    }
+                    is ResponseL.Error -> _state.update {
+                        DetailState.Error(response.message)
+                    }
+                    is ResponseL.Success -> {
+                        _state.update {
+                            DetailState.Success
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }

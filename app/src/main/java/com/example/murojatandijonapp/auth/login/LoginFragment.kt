@@ -33,7 +33,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
             if (validate(email, password)){
                 viewModel.login(User("",email,password))
             }else{
-                snackBar("Enter data !!")
+                snackBar("Email Password kiriting !!")
             }
         }
         observeViewModel()

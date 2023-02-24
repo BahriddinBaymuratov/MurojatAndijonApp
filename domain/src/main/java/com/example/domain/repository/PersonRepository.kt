@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface PersonRepository {
     suspend fun savePerson(person: Person): Flow<ResponseL<Boolean>>
     suspend fun createProblem(person: Person): Flow<ResponseL<Boolean>>
-    suspend fun getAllPerson(userId: String): Flow<ResponseL<List<Person>>>
+    suspend fun getAllPerson(): Flow<ResponseL<List<Person>>>
 }

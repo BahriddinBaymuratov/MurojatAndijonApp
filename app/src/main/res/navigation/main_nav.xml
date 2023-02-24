@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="com.example.murojatandijonapp.main.fragment.StaticFragment"
+        android:name="com.example.murojatandijonapp.main.fragment.statics.StaticFragment"
         android:label="fragment_static"
         tools:layout="@layout/fragment_static" />
     <fragment

@@ -39,11 +39,10 @@ class PersonRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllPerson(userId: String): Flow<ResponseL<List<Person>>> =
+    override suspend fun getAllPerson(): Flow<ResponseL<List<Person>>> =
         callbackFlow {
             ResponseL.Loading
-            val snap = fireStore.collection("products")
-                .whereEqualTo("userId", userId)
+            val snap = fireStore.collection("problem")
                 .addSnapshotListener { snapshot, error ->
                     val response = if (snapshot != null) {
                         val postList = snapshot.toObjects(Person::class.java)

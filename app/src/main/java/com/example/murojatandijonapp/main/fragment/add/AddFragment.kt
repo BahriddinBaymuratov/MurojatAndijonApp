@@ -24,7 +24,6 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
     private val binding get() = _binding!!
     private val viewModel: AddFragmentViewModel by viewModels()
     private var person: Person? = null
-//    private val uid by lazy { FirebaseAuth.getInstance().currentUser?.uid }
 
     override fun onCreateView(
         inflater: LayoutInflater,

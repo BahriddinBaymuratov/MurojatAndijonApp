@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -62,7 +63,8 @@ class Add2Fragment : BaseFragment(R.layout.fragment_add2) {
                         person!!.image
                     )
                     Toast.makeText(requireContext(), "Sizning ma'lumotlaringiz saqlandi!!", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_add2Fragment_to_homeFragment)
+                    val bundle = bundleOf("problem" to person!!)
+                    findNavController().navigate(R.id.action_add2Fragment_to_homeFragment, bundle)
                     Log.d("@@@", "Add 2: Shartga tushdi ")
                 } else {
                     Toast.makeText(requireContext(), "Enter problem!!", Toast.LENGTH_SHORT).show()

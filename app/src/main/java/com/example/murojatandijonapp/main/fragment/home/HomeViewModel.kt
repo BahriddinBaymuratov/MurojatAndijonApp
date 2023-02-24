@@ -20,29 +20,29 @@ class HomeViewModel @Inject constructor(
     val state: StateFlow<HomeState> get() = _state
 
     init {
-        getAllPerson("")
+//        getAllPerson()
     }
 
-    private fun getAllPerson(userId: String) {
-        viewModelScope.launch {
-            useCase.getAllPersonUseCase(userId).collect { response ->
-                when (response) {
-                    is ResponseL.Loading -> {
-                        _state.update {
-                            HomeState.Loading
-                        }
-                        delay(1500L)
-                    }
-                    is ResponseL.Error -> _state.update {
-                        HomeState.Error(response.message)
-                    }
-                    is ResponseL.Success -> {
-                        _state.update {
-                            HomeState.Success(response.data)
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    private fun getAllPerson() {
+//        viewModelScope.launch {
+//            useCase.getAllPersonUseCase(Unit).collect { response ->
+//                when (response) {
+//                    is ResponseL.Loading -> {
+//                        _state.update {
+//                            HomeState.Loading
+//                        }
+//                        delay(1500L)
+//                    }
+//                    is ResponseL.Error -> _state.update {
+//                        HomeState.Error(response.message)
+//                    }
+//                    is ResponseL.Success -> {
+//                        _state.update {
+//                            HomeState.Success(response.data)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
