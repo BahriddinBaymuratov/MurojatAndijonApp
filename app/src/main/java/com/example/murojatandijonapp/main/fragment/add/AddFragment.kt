@@ -6,8 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -22,8 +24,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class AddFragment : BaseFragment(R.layout.fragment_add) {
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
+    private val gender = listOf("Erkak", "Ayol")
+    private lateinit var autoCompleteList: String
     private val viewModel: AddFragmentViewModel by viewModels()
-    private var person: Person? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +40,11 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
     @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        autoComplete()
+        binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
+            binding.checkboxOpen.isVisible = isChecked
+        }
+
         binding.btnBack.click {
             findNavController().popBackStack()
         }
@@ -50,7 +58,7 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
                 val gender = gender.text.toString().trim()
                 val number = number.text.toString().trim()
 
-                if (name.isNotBlank() && lastName.isNotBlank() && gender.isNotBlank() && address.isNotBlank() && number.isNotBlank()) {
+                if (name.isNotBlank() && lastName.isNotBlank() && gender.isNotBlank() && address.isNotBlank() && number.isNotBlank() && ::autoCompleteList.isInitialized) {
                     val person = Person(
                         name,
                         lastName,
@@ -64,9 +72,12 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
                     )
                     val bundle = bundleOf("person" to person)
                     findNavController().navigate(R.id.action_addFragment_to_add2Fragment, bundle)
-                    Log.d("@@@", "AddFragment: Malumotlar jonatildi")
                 } else {
-                    Toast.makeText(requireContext(), "Enter your data !!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Ma'lumotlarni to'liq kiriting !!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -88,6 +99,15 @@ class AddFragment : BaseFragment(R.layout.fragment_add) {
                     }
                 }
             }
+        }
+    }
+
+    private fun autoComplete() {
+        val adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, gender)
+        binding.gender.setAdapter(adapter)
+        binding.gender.setOnItemClickListener { adapterView, view, pos, l ->
+            autoCompleteList = gender[pos]
         }
     }
 }

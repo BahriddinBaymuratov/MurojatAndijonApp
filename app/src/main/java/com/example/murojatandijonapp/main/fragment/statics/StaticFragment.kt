@@ -28,7 +28,8 @@ class StaticFragment : BaseFragment(R.layout.fragment_static) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        autoComplete()
+        binding.btnFilter.isVisible = true
+        binding.linearTop.isVisible = false
         initViews()
     }
 
@@ -41,6 +42,7 @@ class StaticFragment : BaseFragment(R.layout.fragment_static) {
             btnFilter.setOnClickListener {
                 binding.btnFilter.isVisible = false
                 binding.linearTop.isVisible = true
+                autoComplete()
             }
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
@@ -91,7 +93,7 @@ class StaticFragment : BaseFragment(R.layout.fragment_static) {
         val adapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, list)
         binding.autoComplete.setAdapter(adapter)
-        binding.autoComplete.setOnItemClickListener { adapterView, view, pos, l ->
+        binding.autoComplete.setOnItemClickListener { _, _, pos, _ ->
             autoCompleteList = list[pos]
         }
     }

@@ -29,7 +29,6 @@
         <LinearLayout
             android:id="@+id/linearTop"
             android:layout_width="match_parent"
-            android:visibility="gone"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -71,10 +70,13 @@
                     <AutoCompleteTextView
                         android:id="@+id/etFromDate"
                         android:layout_width="match_parent"
-                        android:background="@drawable/autocomplete"
-                        android:inputType="none"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/autocomplete"
+                        android:gravity="center"
+                        android:inputType="none"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,11 +89,14 @@
 
                     <AutoCompleteTextView
                         android:id="@+id/etToDate"
-                        android:inputType="none"
-                        android:background="@drawable/autocomplete"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/autocomplete"
+                        android:gravity="center"
+                        android:inputType="none"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +136,6 @@
                         android:layout_gravity="center"
                         android:background="@drawable/autocomplete"
                         android:gravity="center"
-                        android:text="Jarayonda"
                         android:inputType="none"
                         android:padding="10dp"
                         android:textColorHint="@color/black" />
@@ -155,20 +159,21 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btnFilter"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/linear_stroke"
-            android:id="@+id/btnFilter">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Filtrlash"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:textColor="#3B63FF"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="Filtrlash"
+                android:textColor="#3B63FF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -194,8 +199,8 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

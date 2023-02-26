@@ -65,10 +65,8 @@ class Add2Fragment : BaseFragment(R.layout.fragment_add2) {
                     Toast.makeText(requireContext(), "Sizning ma'lumotlaringiz saqlandi!!", Toast.LENGTH_SHORT).show()
                     val bundle = bundleOf("problem" to person!!)
                     findNavController().navigate(R.id.action_add2Fragment_to_homeFragment, bundle)
-                    Log.d("@@@", "Add 2: Shartga tushdi ")
                 } else {
                     Toast.makeText(requireContext(), "Enter problem!!", Toast.LENGTH_SHORT).show()
-                    Log.d("@@@", "Add 2: Shart bajarilmadi ")
                 }
             }
         }
